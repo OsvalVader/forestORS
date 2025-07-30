@@ -83,8 +83,8 @@ with st.form("formulario"):
     submit = st.form_submit_button("Predecir")
     
     if submit:
-        historial_cod = le.fit(ds["Historial_Credito"]).transform(historial)[0]
-        educacion_cod = le.fit(ds["Nivel_Educacion"]).transform(educacion)[0]
+        historial_cod = le.fit(ds["Historial_Credito"]).transform([historial])[0]
+        educacion_cod = le.fit(ds["Nivel_Educacion"]).transform([educacion])[0]
         entrada = pd.DataFrame([[ingresos, gastos, deudas, historial_cod, edad, tarjeta,educacion_cod, inversiones]], columns=x.columns)
         
         pred = modelo.predict(entrada)[0]
